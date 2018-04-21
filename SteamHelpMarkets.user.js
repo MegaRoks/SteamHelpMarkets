@@ -51,13 +51,14 @@ function delete_for_button_green(){
 
 function delete_for_array(val){
     var d2m = val.replace(/ /g, '%20');
+    var d2o = val.replace(/ /g, '+');
     var quality = ["Ascendant", "Auspicious", "Autographed", "Corrupted", "Elder", "Exalted", "Frozen", "Frozen", "Heroic", "Inscribed", "Inscribed", "Genuine"];
     var word = val.substr(0, val.indexOf(' '));
     if (quality.indexOf(word) !== -1){
         val = val.slice(word.length + 1);
     }
     var d2w = val.replace(/ /g, '_');
-    return [d2w, d2m];
+    return [d2w, d2m, d2o];
 }
 
 function inventory_logos0(dfa){
@@ -72,6 +73,12 @@ function inventory_logos0(dfa){
         <a class="item_market_action_button item_market_action_button_green button_green" href="https://market.dota2.net/?search=${dfa[1]}" target="_blank" id="quicksellbtn" style="margin-right: 12px; margin-bottom: 8px;">
             <span class="item_market_action_button_edge item_market_action_button_left"></span>
             <span class="item_market_action_button_contents">Dota2Market</span>
+            <span class="item_market_action_button_edge item_market_action_button_right"></span>
+            <span class="item_market_action_button_preload"></span>
+        </a>
+        <a class="item_market_action_button item_market_action_button_green button_green" href="https://ru.opskins.com/?loc=shop_search&app=570_2&search_item=${dfa[2]}&sort=lh" target="_blank" id="quicksellbtn" style="margin-right: 12px; margin-bottom: 8px;">
+            <span class="item_market_action_button_edge item_market_action_button_left"></span>
+            <span class="item_market_action_button_contents">Dota2Opskinst</span>
             <span class="item_market_action_button_edge item_market_action_button_right"></span>
             <span class="item_market_action_button_preload"></span>
         </a>
@@ -92,6 +99,12 @@ function inventory_logos1(dfa){
             <span class="item_market_action_button_contents button_green">Dota2Market</span>
             <span class="item_market_action_button_edge item_market_action_button_right button_green"></span>
             <span class="item_market_action_button_preload button_green"></span>
+        </a>
+        <a class="item_market_action_button item_market_action_button_green button_green" href="https://ru.opskins.com/?loc=shop_search&app=570_2&search_item=${dfa[2]}&sort=lh" target="_blank" id="quicksellbtn" style="margin-right: 12px; margin-bottom: 8px;">
+            <span class="item_market_action_button_edge item_market_action_button_left"></span>
+            <span class="item_market_action_button_contents">Dota2Opskinst</span>
+            <span class="item_market_action_button_edge item_market_action_button_right"></span>
+            <span class="item_market_action_button_preload"></span>
         </a>
     `);
 }
