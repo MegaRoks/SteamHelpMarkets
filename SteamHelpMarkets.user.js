@@ -78,7 +78,7 @@ function inventory_logos0(dfa){
         </a>
         <a class="item_market_action_button item_market_action_button_green button_green" href="https://ru.opskins.com/?loc=shop_search&app=570_2&search_item=${dfa[2]}&sort=lh" target="_blank" id="quicksellbtn" style="margin-right: 12px; margin-bottom: 8px;">
             <span class="item_market_action_button_edge item_market_action_button_left"></span>
-            <span class="item_market_action_button_contents">Dota2Opskinst</span>
+            <span class="item_market_action_button_contents">Dota2Opskins</span>
             <span class="item_market_action_button_edge item_market_action_button_right"></span>
             <span class="item_market_action_button_preload"></span>
         </a>
@@ -102,7 +102,7 @@ function inventory_logos1(dfa){
         </a>
         <a class="item_market_action_button item_market_action_button_green button_green" href="https://ru.opskins.com/?loc=shop_search&app=570_2&search_item=${dfa[2]}&sort=lh" target="_blank" id="quicksellbtn" style="margin-right: 12px; margin-bottom: 8px;">
             <span class="item_market_action_button_edge item_market_action_button_left"></span>
-            <span class="item_market_action_button_contents">Dota2Opskinst</span>
+            <span class="item_market_action_button_contents">Dota2Opskins</span>
             <span class="item_market_action_button_edge item_market_action_button_right"></span>
             <span class="item_market_action_button_preload"></span>
         </a>
