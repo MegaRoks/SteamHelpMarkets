@@ -2,7 +2,7 @@
 // @name         SteamHelpMarkets
 // @description  Allows you to quickly see the subject on Dota2Wiki and Dota2Market
 // @namespace    http://tampermonkey.net/
-// @version      0.4
+// @version      0.6
 // @author       MegaRoks
 // @match        *://steamcommunity.com/*/*/inventory/*
 // @icon        https://raw.githubusercontent.com/MegaRoks/SteamHelpMarkets/master/favicon.jpg
