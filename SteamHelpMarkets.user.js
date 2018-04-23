@@ -54,7 +54,7 @@ function names_gemes(){
         'Steam': [add_for_href, "753_6", "https://gifts.tm/?search="],
         'Just Survive': [add_for_href, "295110_1"],
         'H1Z1': [add_for_href, "433850_1"],
-        'Portal 2': [add_for_href, "218620_2"],
+        'PAYDAY 2': [add_for_href, "218620_2"],
         'Unturned': [add_for_href, "304930_2"],
         'Rust': [add_for_href, "252490_2"],
         'Killing Floor 2': [add_for_href, "232090_2"],
