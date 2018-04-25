@@ -1,16 +1,17 @@
 // ==UserScript==
-// @name         SteamHelpMarkets
+// @name         SteamMarketsHelp
 // @description  Allows you to quickly see the subject on Dota2Wiki and Dota2Market
 // @namespace    http://tampermonkey.net/
 // @version      0.8
 // @author       MegaRoks
 // @match        *://steamcommunity.com/*/*/inventory/*
-// @icon        https://raw.githubusercontent.com/MegaRoks/SteamHelpMarkets/master/favicon.jpg
-// @updateURL   https://github.com/MegaRoks/SteamHelpMarkets/raw/master/SteamHelpMarkets.user.js
+// @icon        https://raw.githubusercontent.com/MegaRoks/SteamMarketsHelp/master/favicon.jpg
+// @updateURL   https://github.com/MegaRoks/SteamMarketsHelp/raw/master/SteamMarketsHelp.user.js
 // @grant        none
 // ==/UserScript==
 
 var id_games_for_market = ["730_2", "440_2", "570_2", "578080_2", "Подарок"];
+var name_market = ["Opskins", "Market", "Wiki"];
 
 (function() {
     document.getElementById("iteminfo0_item_name").addEventListener(
@@ -115,67 +116,47 @@ function delete_for_array(val){
 }
 
 function inventory_dota0(array_for_href, games, item_type){
+    var count = 1;
     var iteminfo0 = document.getElementById('iteminfo0_item_tags');
-    if(games[1] === "570_2"){
-        iteminfo0.insertAdjacentHTML('afterend', `
-            <a class="item_market_action_button item_market_action_button_green button_green" href="${array_for_href[0]}" target="_blank" id="quicksellbtn" style="margin-right: 12px; margin-bottom: 8px;">
-                <span class="item_market_action_button_edge item_market_action_button_left"></span>
-                <span class="item_market_action_button_contents">Wiki</span>
-                <span class="item_market_action_button_edge item_market_action_button_right"></span>
-                <span class="item_market_action_button_preload"></span>
-            </a>`);
-    }
     id_games_for_market.some(q => {
-        if (games[1].startsWith(q)|| item_type.indexOf(q) !== -1) {
-            iteminfo0.insertAdjacentHTML('afterend', `
-                <a class="item_market_action_button item_market_action_button_green button_green" href="${array_for_href[1]}" target="_blank" id="quicksellbtn" style="margin-right: 12px; margin-bottom: 8px;">
-                    <span class="item_market_action_button_edge item_market_action_button_left"></span>
-                    <span class="item_market_action_button_contents">Market</span>
-                    <span class="item_market_action_button_edge item_market_action_button_right"></span>
-                    <span class="item_market_action_button_preload"></span>
-                </a>
-            `);
+        if (games[1].startsWith(q) || item_type.indexOf(q) !== -1) {
+            count++;
         }
     });
-    iteminfo0.insertAdjacentHTML('afterend', `
-        <a class="item_market_action_button item_market_action_button_green button_green" href="${array_for_href[2]}&sort=lh" target="_blank" id="quicksellbtn" style="margin-right: 12px; margin-bottom: 8px;">
-            <span class="item_market_action_button_edge item_market_action_button_left"></span>
-            <span class="item_market_action_button_contents">Opskins</span>
-            <span class="item_market_action_button_edge item_market_action_button_right"></span>
-            <span class="item_market_action_button_preload"></span>
-        </a>
-    `);
+    if(games[1] === "570_2"){
+        count++;
+    }
+    for (var i = 0; i < count; i++) {
+        iteminfo0.insertAdjacentHTML('afterend', `
+            <a class="item_market_action_button item_market_action_button_green button_green" href="${array_for_href[i]}" target="_blank" id="quicksellbtn" style="margin-right: 12px; margin-bottom: 8px;">
+                <span class="item_market_action_button_edge item_market_action_button_left"></span>
+                <span class="item_market_action_button_contents">${name_market[i]}</span>
+                <span class="item_market_action_button_edge item_market_action_button_right"></span>
+                <span class="item_market_action_button_preload"></span>
+            </a>
+        `);
+    }
 }
 
 function inventory_dota1(array_for_href, games, item_type){
+    var count = 1;
     var iteminfo1 = document.getElementById('iteminfo1_item_tags');
-    if(games[1] === "570_2"){
-        iteminfo1.insertAdjacentHTML('afterend', `
-            <a class="item_market_action_button item_market_action_button_green button_green" href="${array_for_href[0]}" target="_blank" id="quicksellbtn" style="margin-right: 12px; margin-bottom: 8px;">
-                <span class="item_market_action_button_edge item_market_action_button_left"></span>
-                <span class="item_market_action_button_contents">Wiki</span>
-                <span class="item_market_action_button_edge item_market_action_button_right"></span>
-                <span class="item_market_action_button_preload"></span>
-            </a>`);
-    }
     id_games_for_market.some(q => {
         if (games[1].startsWith(q) || item_type.indexOf(q) !== -1) {
-            iteminfo1.insertAdjacentHTML('afterend', `
-                <a class="item_market_action_button item_market_action_button_green button_green" href="${array_for_href[1]}" target="_blank" id="quicksellbtn" style="margin-right: 12px; margin-bottom: 8px;">
-                    <span class="item_market_action_button_edge item_market_action_button_left"></span>
-                    <span class="item_market_action_button_contents">Market</span>
-                    <span class="item_market_action_button_edge item_market_action_button_right"></span>
-                    <span class="item_market_action_button_preload"></span>
-                </a>
-            `);
+            count++;
         }
     });
-    iteminfo1.insertAdjacentHTML('afterend', `
-        <a class="item_market_action_button item_market_action_button_green button_green" href="${array_for_href[2]}&sort=lh" target="_blank" id="quicksellbtn" style="margin-right: 12px; margin-bottom: 8px;">
-            <span class="item_market_action_button_edge item_market_action_button_left"></span>
-            <span class="item_market_action_button_contents">Opskins</span>
-            <span class="item_market_action_button_edge item_market_action_button_right"></span>
-            <span class="item_market_action_button_preload"></span>
-        </a>
-    `);
+    if(games[1] === "570_2"){
+        count++;
+    }
+    for (var i = 0; i < count; i++) {
+        iteminfo1.insertAdjacentHTML('afterend', `
+            <a class="item_market_action_button item_market_action_button_green button_green" href="${array_for_href[i]}" target="_blank" id="quicksellbtn" style="margin-right: 12px; margin-bottom: 8px;">
+                <span class="item_market_action_button_edge item_market_action_button_left"></span>
+                <span class="item_market_action_button_contents">${name_market[i]}</span>
+                <span class="item_market_action_button_edge item_market_action_button_right"></span>
+                <span class="item_market_action_button_preload"></span>
+            </a>
+        `);
+    }
 }
