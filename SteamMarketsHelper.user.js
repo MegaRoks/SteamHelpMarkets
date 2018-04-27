@@ -1,5 +1,5 @@
 // ==UserScript==
-// @name         SteamMarketsHelp
+// @name         SteamMarketsHelper
 // @description  Allows you to quickly see the subject on Dota2Wiki and Dota2Market
 // @namespace    http://tampermonkey.net/
 // @version      0.8
@@ -10,47 +10,49 @@
 // @grant        none
 // ==/UserScript==
 
-var id_games_for_market = ["730_2", "440_2", "570_2", "578080_2", "Подарок"];
+var id_games_for_market = ["570_2", "730_2", "440_2", "578080_2", "Подарок"];
 var name_market = ["Opskins", "Market", "Wiki"];
 
 (function() {
-    document.getElementById("iteminfo0_item_name").addEventListener(
-        "DOMSubtreeModified",
-        function(item_type) {
-            document.getElementById("iteminfo0_item_type").addEventListener("DOMSubtreeModified", function() {
+
+    document.getElementById("iteminfo0_item_type").addEventListener("DOMSubtreeModified", function() {
+        document.addEventListener("click", function(e) {
+            if (e.target.classList.contains('inventory_item_link')) {
                 delete_for_button_green();
                 var games = names_gemes();
                 var val = document.getElementById("iteminfo0_item_name").innerHTML;
-                var item_type = document.getElementById("iteminfo0_item_type").innerHTML;
+                var item_type = [document.getElementById("iteminfo0_item_type").innerHTML];
+                var ops_href = document.getElementById("iteminfo0_item_market_actions").getElementsByTagName("a")[0].href;
+                console.log(ops_href + ' 1');
                 if (val.indexOf("Самоцветы") >= 0 || val.indexOf("скидка") >= 0) {
                 }
                 else {
                     var array_for_name = delete_for_array(val);
-                    var array_for_href = games[0](array_for_name, games);
+                    var array_for_href = games[0](array_for_name, games, ops_href);
                     inventory_dota0(array_for_href, games, item_type);
                 }
-            });
-        }
-    );
-
-    document.getElementById("iteminfo1_item_name").addEventListener(
-        "DOMSubtreeModified",
-        function(item_type) {
-            document.getElementById("iteminfo1_item_type").addEventListener("DOMSubtreeModified", function() {
+            }
+        });
+    });
+    document.getElementById("iteminfo1_item_type").addEventListener("DOMSubtreeModified", function() {
+        document.addEventListener("click", function(e) {
+            if (e.target.classList.contains('inventory_item_link')) {
                 delete_for_button_green();
                 var games = names_gemes();
                 var val = document.getElementById("iteminfo1_item_name").innerHTML;
-                var item_type = document.getElementById("iteminfo1_item_type").innerHTML;
+                var item_type = [document.getElementById("iteminfo1_item_type").innerHTML];
+                var ops_href = document.getElementById("iteminfo1_item_market_actions").getElementsByTagName("a")[0].href;
+                console.log(ops_href + ' 1');
                 if (val.indexOf("Самоцветы") >= 0 || val.indexOf("скидка") >= 0) {
                 }
                 else {
                     var array_for_name = delete_for_array(val);
-                    var array_for_href = games[0](array_for_name, games);
+                    var array_for_href = games[0](array_for_name, games, ops_href);
                     inventory_dota1(array_for_href, games, item_type);
                 }
-            });
-        }
-    );
+            }
+        });
+    });
 })();
 
 function names_gemes(){
@@ -87,19 +89,26 @@ function names_gemes(){
     return games[game_name];
 }
 
-function add_for_href(array_for_name, games){
-    var wiki_href = "https://dota2-ru.gamepedia.com/" + array_for_name[0];
+function add_for_href(array_for_name, games, ops_href){
+    console.log(ops_href);
     var market_href = games[2] + array_for_name[1];
-    var opskins_href = "https://ru.opskins.com/?loc=shop_search&app=" + games[1] + "&search_item=" + array_for_name[2] + "&sort=lh";
-    return [wiki_href, market_href, opskins_href];
+    var wiki_href = "https://dota2-ru.gamepedia.com/" + array_for_name[2];
+    var opskins_href = "https://ru.opskins.com/?loc=shop_search&app=" + games[1] + "&search_item=";
+    if(ops_href === ''){
+        opskins_href += array_for_name[1] + "&sort=lh";
+        console.log(opskins_href);
+    }
+    else{
+        opskins_href += ops_href.split('/', '\(.+\)')[6] + "&sort=lh";
+        console.log(opskins_href);
+    }
+    return [opskins_href, market_href, wiki_href];
 }
 
 function delete_for_button_green(){
     var elem = document.getElementsByClassName("button_green");
-    if (elem.length > 0) {
-        for(var i = 0; i < elem.length; i++){
-            elem[i].innerHTML = '';
-        }
+    for(var i = elem.length - 1; i >= 0; i--){
+        elem[i].remove();
     }
 }
 
@@ -112,14 +121,14 @@ function delete_for_array(val){
         val = val.slice(word.length + 1);
     }
     var wiki = val.replace(/ /g, '_');
-    return [wiki, market, opskins];
+    return [opskins, market, wiki];
 }
 
 function inventory_dota0(array_for_href, games, item_type){
     var count = 1;
     var iteminfo0 = document.getElementById('iteminfo0_item_tags');
     id_games_for_market.some(q => {
-        if (games[1].startsWith(q) || item_type.indexOf(q) !== -1) {
+        if (games[1].startsWith(q) || item_type[0].startsWith(q)) {
             count++;
         }
     });
@@ -142,7 +151,7 @@ function inventory_dota1(array_for_href, games, item_type){
     var count = 1;
     var iteminfo1 = document.getElementById('iteminfo1_item_tags');
     id_games_for_market.some(q => {
-        if (games[1].startsWith(q) || item_type.indexOf(q) !== -1) {
+        if (games[1].startsWith(q) || item_type[0].startsWith(q)) {
             count++;
         }
     });
