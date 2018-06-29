@@ -1,6 +1,6 @@
 # SteamMarketsHelper
 
-The extension adds the navigation buttons to the sites dota2-ru.gamepedia.com, market.dota2.net and opskins.com.
+The extension adds a button in the steam inventory to the sites dota2-ru.gamepedia.com, market.dota2.net and opskins.com.
 
 <h2>Getting Started</h2>
 <h3>Prerequisites</h3>
