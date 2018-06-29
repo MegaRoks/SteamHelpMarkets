@@ -20,4 +20,4 @@ Contributions are very welcome!
 <a href="https://github.com/MegaRoks/SteamMarketsHelper/issues/new" target="_blank">Open an issue</a> for bug and feature requests or <a href="https://github.com/MegaRoks/SteamMarketsHelper/compare" target="_blank">submit PR</a> and make this plugin better.
 
 <h3>License</h3>
-This project is licensed under the terms of the MIT license.
+This project is licensed under the terms of the <a href="https://github.com/MegaRoks/SteamMarketsHelper/blob/master/LICENSE" target="_blank">MIT license</a>.
