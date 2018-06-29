@@ -6,8 +6,9 @@ The extension adds the navigation buttons to the sites dota2-ru.gamepedia.com, m
 <h3>Prerequisites</h3>
 
 Make sure you have user scripts plugin installed in your browser. Here are the most popular:
-<a href="https://www.greasespot.net/" target="_blank">Greasemonkey</a> – Firefox
-<a href="https://tampermonkey.net/" target="_blank">Tampermonkey</a> – Chrome, Microsoft Edge, Safari, Opera, Firefox
+
+* [Greasemonkey](http://www.greasespot.net/) – Firefox
+* [Tampermonkey](https://tampermonkey.net/) – Chrome, Microsoft Edge, Safari, Opera, Firefox
 
 <h3>Installing</h3>
 You can install script:
