@@ -5,7 +5,6 @@ The extension adds a button in the steam inventory to the sites dota2-ru.gameped
 <h2>Example</h2>
 
 <center>An example of how a script works on a Dot 2 object</center>
-<br>
 <img src="https://downloader.disk.yandex.ru/preview/7987d60a91e4cd9be349e10ae991035ffd4994a969330ac1c3eeb66d206a6cc0/5b49dd14/APYlRbnUVcDB43PrzL4Q9pM2KkJb7kgV-Ag8IrGtmSEp2-wYzkUtawHtBKfTKf6TW_mzclqKWsqBwRp3RpU7yA%3D%3D?uid=0&filename=2018-07-14_13-16-05.png&disposition=inline&hash=&limit=0&content_type=image%2Fpng&tknv=v2&size=2048x2048">
 
 <h2>Getting Started</h2>
